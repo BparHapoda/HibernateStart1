@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="org.example.models.Student" table="students">
+        <id name="id" type="java.lang.Integer">
+            <generator class="identity" />
+        </id>
+        <property name="name" type="java.lang.String" column="name" />
+        <property name="surname" type="java.lang.String" column="surname" />
+
+        <bag name="courses">
+<key> <column name="id" not-null="true"/></key>
+<many-to-many entity-name="org.example.models.Course">
+<column name="course_id" not-null="true"/>
+</many-to-many>
+        </bag>
+    </class>
+</hibernate-mapping>
